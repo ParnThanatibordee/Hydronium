@@ -10,8 +10,8 @@ The objective of the project is to track the plant's water consumption to study 
 
 | Name | Version |
 |------|---------|
-| X | A |
-| Y | B |
+| DBUtils | any version |
+| PyMySQL | any version |
 
 ### Installation
 1. Clone this repository
