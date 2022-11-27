@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: Hydronium API
+  description:
+    This API provides historical water comsuming data of observed plant. 
+    Raw data provideed by Sensors (Light, Temperature, Humidity in Soil), 
+    Co2Signal, and Thai Meteorological Department (TMD).
+  version: 2.0.0
+servers:
+  - url: http://127.0.0.1:8080/hydro/v1
+paths:
+  /sensors:
+  /sensors/{source}:
+  /water/consume:
+  /water/consume/{ts}:
+  /water/nextWatering:
+  # ค่าความชื้นในดิน, consume rate, when to watering again, sensors ต่างๆ(query by source)
+components:
+  schemas:
+    Sensor:
+      type: object
+      properties: 
+        ts:
+          type: datetime
+        source:
+          type: string
+          description: Source of the value
+        value:
+          type: number

@@ -15,3 +15,18 @@ pool = PooledDB(creator=pymysql,
                 maxconnections=1,
                 blocking=True)
 
+def get_sensors():
+    pass
+
+def get_sensor_details(source):
+    pass
+
+def get_water_consume():
+    pass
+
+def get_water_consume_details(ts):
+    pass
+
+def get_watering_next_time():
+    pass
+
