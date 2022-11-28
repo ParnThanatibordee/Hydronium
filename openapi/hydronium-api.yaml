@@ -10,11 +10,82 @@ servers:
   - url: http://127.0.0.1:8080/hydro/v1
 paths:
   /sensors:
+    get:
+      summary: Returns a list of sensors.
+      operationId: controller.get_sensors
+      responses:
+        200:
+          descripttion: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sensor'
   /sensors/{source}:
+    parameters:
+    - name: source
+      in: path
+      required: true
+      schema:
+        type : string
+    get:
+      summary: Returns complete details of the specified sensors.
+      operationId: controller.get_sensor_details
+      responses:
+        200:
+          descripttion: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sensor'
   /water/consume:
+    get:
+      summary: Returns a list of water consuming.
+      operationId: controller.get_water_consume
+      responses:
+        200:
+          descripttion: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterConsume'
   /water/consume/{ts}:
+    parameters:
+    - name: ts
+      in: path
+      required: true
+      schema:
+        type : string
+    get:
+      summary: Returns complete details of the specified timestamp.
+      operationId: controller.get_water_consume_details
+      responses:
+        200:
+          descripttion: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterConsume'
   /water/nextWatering:
-  # ค่าความชื้นในดิน, consume rate, when to watering again, sensors ต่างๆ(query by source)
+    get:
+      summary: Returns next datetime to watering.
+      operationId: controller.get_watering_next_time
+      responses:
+        200:
+          descripttion: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterAgain'
 components:
   schemas:
     Sensor:
@@ -27,3 +98,17 @@ components:
           description: Source of the value
         value:
           type: number
+    WaterConsume:
+      type: object
+      properties:
+        ts:
+          type: datetime
+        waterConsume:
+          type: number
+          description: water consuming (ml per day)
+    WaterAgain:
+      type: object
+      properties:
+        wateringAgain:
+          type: datetime
+          description: when to watering the plant again
