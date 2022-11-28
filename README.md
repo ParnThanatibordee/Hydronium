@@ -17,7 +17,7 @@ The objective of the project is to track the plant's water consumption to study 
 1. Clone this repository
 2. Inside the project folder, create and activate a virtual environment
 ```
-python3 -m venv env
+python -m venv env
 . env/bin/activate          # macOS and Linux
 env\Scripts\activate.bat    # Windows
 ```
