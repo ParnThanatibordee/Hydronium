@@ -39,7 +39,7 @@ DB_NAME = <database name>
 ```
 python app.py
 ```
-- Optionally test the API at http://localhost:8080/hydro/v1
+- Optionally test the API at http://localhost:8080/hydro/v1/ui
 
 3. Start openapi-to-graphql in another terminal with CORS (Cross-Origin Resource Sharing) enabled
 ```
