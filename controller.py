@@ -16,17 +16,34 @@ pool = PooledDB(creator=pymysql,
                 blocking=True)
 
 def get_sensors():
-    pass
+    with pool.connection() as conn, conn.cursor() as cs:
+        cs.execute("""
+            SELECT ts, source, value
+            FROM SoftWet_sensor
+        """)
+        result = [models.Sensor(*row) for row in cs.fetchall()]
+        return result
 
 def get_sensor_details(source):
-    pass
+    with pool.connection() as conn, conn.cursor() as cs:
+        cs.execute("""
+            SELECT ts, source, value
+            FROM SoftWet_sensor
+            WHERE source=%s
+        """, [source])
+        result = cs.fetchone()
+    if result:
+        ts, source, value = result
+        return models.Sensor(*result)
+    else:
+        abort(404)
 
 def get_water_consume():
-    pass
+    return 'get_water_consume'
 
 def get_water_consume_details(ts):
-    pass
+    return 'get_water_consume_details'
 
 def get_watering_next_time():
-    pass
+    return 'get_watering_next_time'
 
