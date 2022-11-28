@@ -15,7 +15,7 @@ paths:
       operationId: controller.get_sensors
       responses:
         200:
-          descripttion: Success
+          description: Success
           content:
             application/json:
               schema:
@@ -34,7 +34,7 @@ paths:
       operationId: controller.get_sensor_details
       responses:
         200:
-          descripttion: Success
+          description: Success
           content:
             application/json:
               schema:
@@ -47,7 +47,7 @@ paths:
       operationId: controller.get_water_consume
       responses:
         200:
-          descripttion: Success
+          description: Success
           content:
             application/json:
               schema:
@@ -66,7 +66,7 @@ paths:
       operationId: controller.get_water_consume_details
       responses:
         200:
-          descripttion: Success
+          description: Success
           content:
             application/json:
               schema:
@@ -79,7 +79,7 @@ paths:
       operationId: controller.get_watering_next_time
       responses:
         200:
-          descripttion: Success
+          description: Success
           content:
             application/json:
               schema:
@@ -92,7 +92,7 @@ components:
       type: object
       properties: 
         ts:
-          type: datetime
+          type: string
         source:
           type: string
           description: Source of the value
@@ -102,7 +102,7 @@ components:
       type: object
       properties:
         ts:
-          type: datetime
+          type: string
         waterConsume:
           type: number
           description: water consuming (ml per day)
@@ -110,5 +110,5 @@ components:
       type: object
       properties:
         wateringAgain:
-          type: datetime
+          type: string
           description: when to watering the plant again
