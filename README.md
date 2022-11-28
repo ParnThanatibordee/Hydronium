@@ -39,11 +39,11 @@ DB_NAME = <database name>
 ```
 python app.py
 ```
-- Optionally test the API at http://localhost:8080/rain-api/v3/ui
+- Optionally test the API at http://localhost:8080/hydro/v1
 
 3. Start openapi-to-graphql in another terminal with CORS (Cross-Origin Resource Sharing) enabled
 ```
-openapi-to-graphql openapi/rain-api.yaml
+openapi-to-graphql openapi/hydronium-api.yaml
 ```
 - Open the page http://localhost:3000/graphql
 
