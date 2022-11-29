@@ -71,7 +71,7 @@
               body: JSON.stringify({
                 query: `
                   {
-                     controllerGetSensorDetails(source: ${source}) {
+                     controllerGetSensorDetails(source: "${source}"") {
                         ts
                         source
                         value
@@ -81,6 +81,7 @@
             });
             var json = await resp.json();
             var table = json.data;
+            console.log(table)
 
             var data = [{
                x: table.controllerGetSensorDetails.map(row => row.ts),
