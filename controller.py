@@ -68,5 +68,18 @@ def get_water_consume_details(ts):
         abort(404)
 
 def get_watering_next_time():
-    return 'get_watering_next_time'
+    with pool.connection() as conn, conn.cursor() as cs:
+        cs.execute("""
+            SELECT ts, source, value
+            FROM SoftWet_sensor
+            WHERE source='tmd'
+        """)
+        fetch = cs.fetchall()
+        ts, source, value = fetch[len(fetch)-1]
+        if value >= 10:
+            return "The weather tends to rain, so you don't have to water yet."
+        else:
+            # คำนวนหาวัน     
+
+            return "2022-11-25T00:00:00Z"
 
