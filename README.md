@@ -43,7 +43,7 @@ python app.py
 
 3. Start openapi-to-graphql in another terminal with CORS (Cross-Origin Resource Sharing) enabled
 ```
-openapi-to-graphql openapi/hydronium-api.yaml
+openapi-to-graphql --cors -u http://localhost:8080/hydro/v1 openapi/hydronium-api.yaml
 ```
 - Open the page http://localhost:3000/graphql
 
