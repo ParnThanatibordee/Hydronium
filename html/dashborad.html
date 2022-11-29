@@ -30,6 +30,7 @@
       <link rel="stylesheet" href="css/owl.carousel.min.css">
       <link rel="stylesoeet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
    </head>
    <body>
       <!--header section start -->
@@ -54,11 +55,50 @@
       </div>
       <!-- header section end -->
       <!-- dashboard section start -->
-      <div class="dashboard_section">
-        <div class="container">
-           <h2 style="text-align:center; color: white;">**Wait for endpoint dashborad**</h2>
-        </div>
-     </div>
+      <div id="chart" style="width:100%;height:75vh;"></div>
+      <!-- แก้ให้มันไม่ทับ navbar -->
+      <script>
+         async function createChart() {
+            var resp = await fetch('http://localhost:3000/graphql', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+              body: JSON.stringify({
+                query: `
+                  {
+	                  waterConsume {
+		                  ts
+                        waterConsume
+	                  }
+                  }`
+              })
+            });
+            var json = await resp.json();
+            var table = json.data;
+
+            var data = [{
+               x: table.waterConsume.map(row => row.ts),
+               y: table.waterConsume.map(row => row.waterConsume),
+               type: 'line',
+               name: 'waterConsume',
+            }];       
+
+            var layout = {
+               title: 'water consuming',
+               xaxis: {
+                 title: 'timestamp'
+               },
+               yaxis: {
+                 title: 'waterConsume',
+               }
+            };
+            var config = { responsive: true };
+            Plotly.newPlot("chart", data, layout, config);
+         } 
+         createChart();
+      </script>
       <!-- dashboard section end -->
       <!-- watering again section start -->
       <div class="watering_section">
