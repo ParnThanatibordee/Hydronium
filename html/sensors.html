@@ -57,7 +57,7 @@
       <!-- sensors section start -->
       <div id="chart" style="width:100%;height:75vh;"></div>
       <script>
-         async function createChart(source) {
+         async function createChart() {
             var resp = await fetch('http://localhost:3000/graphql', {
               method: 'POST',
               headers: {
@@ -67,7 +67,7 @@
               body: JSON.stringify({
                 query: `
                   {
-                    sensor(${source}) {
+                    sensors {
                      ts
                      source
                      value
@@ -79,26 +79,26 @@
             var table = json.data;
 
             var data = [{
-               x: table.sensor.map(row => row.ts),
-               y: table.sensor.map(row => row.value),
+               x: table.sensors.map(row => row.ts),
+               y: table.sensors.map(row => row.value),
                type: 'line',
-               name: source,
-            }];
+               name: 'sensor',
+            }];       
+
             var layout = {
-               title: `${source}'s sensor`,
+               title: 'sensors',
                xaxis: {
                  title: 'timestamp'
                },
                yaxis: {
                  title: 'value',
-                 // range: [0,500]
+                 range: [0,500]
                }
             };
             var config = { responsive: true };
             Plotly.newPlot("chart", data, layout, config);
          } 
-         // createChart();
-         // เอาไปใส่ใน button
+         createChart();
       </script>
       <!-- sensors section end -->
       <!-- footer section start -->
