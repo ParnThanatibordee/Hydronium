@@ -61,7 +61,7 @@
       <div id="chart3" class="chart-style3" style="width:100%;height:75vh;"></div>
       <!-- แก้ให้มันไม่ทับ navbar -->
       <script>
-         async function createChart(chart, source) {
+         async function createChart1() {
             var resp = await fetch('http://localhost:3000/graphql', {
               method: 'POST',
               headers: {
@@ -71,7 +71,7 @@
               body: JSON.stringify({
                 query: `
                   {
-                     controllerGetSensorDetails(source: "${source}"") {
+                     controllerGetSensorDetails(source: "temp") {
                         ts
                         source
                         value
@@ -81,17 +81,16 @@
             });
             var json = await resp.json();
             var table = json.data;
-            console.log(table)
 
             var data = [{
                x: table.controllerGetSensorDetails.map(row => row.ts),
                y: table.controllerGetSensorDetails.map(row => row.value),
                type: 'line',
-               name: `${source}`,
+               name: 'temp',
             }];       
 
             var layout = {
-               title: `${source}`,
+               title: 'temp',
                xaxis: {
                  title: 'timestamp'
                },
@@ -100,11 +99,91 @@
                }
             };
             var config = { responsive: true };
-            Plotly.newPlot(`${chart}`, data, layout, config);
+            Plotly.newPlot('chart1', data, layout, config);
          } 
-         createChart('chart1', 'light');
-         createChart('chart2', 'temp');
-         createChart('chart3', 'soil');
+         async function createChart2() {
+            var resp = await fetch('http://localhost:3000/graphql', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+              body: JSON.stringify({
+                query: `
+                  {
+                     controllerGetSensorDetails(source: "light") {
+                        ts
+                        source
+                        value
+                     }
+                  }`
+              })
+            });
+            var json = await resp.json();
+            var table = json.data;
+
+            var data = [{
+               x: table.controllerGetSensorDetails.map(row => row.ts),
+               y: table.controllerGetSensorDetails.map(row => row.value),
+               type: 'line',
+               name: 'light',
+            }];       
+
+            var layout = {
+               title: 'light',
+               xaxis: {
+                 title: 'timestamp'
+               },
+               yaxis: {
+                 title: 'value',
+               }
+            };
+            var config = { responsive: true };
+            Plotly.newPlot('chart2', data, layout, config);
+         } 
+         async function createChart3() {
+            var resp = await fetch('http://localhost:3000/graphql', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+              body: JSON.stringify({
+                query: `
+                  {
+                     controllerGetSensorDetails(source: "soil") {
+                        ts
+                        source
+                        value
+                     }
+                  }`
+              })
+            });
+            var json = await resp.json();
+            var table = json.data;
+
+            var data = [{
+               x: table.controllerGetSensorDetails.map(row => row.ts),
+               y: table.controllerGetSensorDetails.map(row => row.value),
+               type: 'line',
+               name: 'soil',
+            }];       
+
+            var layout = {
+               title: 'soil',
+               xaxis: {
+                 title: 'timestamp'
+               },
+               yaxis: {
+                 title: 'value',
+               }
+            };
+            var config = { responsive: true };
+            Plotly.newPlot('chart3', data, layout, config);
+         } 
+         createChart1();
+         createChart2();
+         createChart3();
       </script>
       <!-- sensors section end -->
       <!-- Javascript files-->

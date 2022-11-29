@@ -46,7 +46,7 @@ def get_water_consume():
         result = [] 
         for row in cs.fetchall():
             ts, source, value = row
-            co2 = (float(value)/100)/W
+            co2 = (float(value)/100)*W
             result.append(models.WaterConsume(ts, co2)) 
 
         return result
@@ -61,7 +61,7 @@ def get_water_consume_details(ts):
         result = cs.fetchone()
     if result:
         ts, source, value = result
-        co2 = (float(value)/100)/W
+        co2 = (float(value)/100)*W
         
         return models.WaterConsume(ts, co2)
     else:
@@ -79,7 +79,5 @@ def get_watering_next_time():
         if value >= 10:
             return "The weather tends to rain, so you don't have to water yet."
         else:
-            # คำนวนหาวัน     
-
-            return models.WaterAgain("2022-11-25T00:00:00Z") 
+            return models.WaterAgain(ts) 
 
