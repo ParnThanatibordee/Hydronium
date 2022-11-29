@@ -1,5 +1,6 @@
 import sys
 import os
+from flask_cors import CORS
 
 if not os.path.exists("config.py"):
     print("Configuration 'config.py' not found.  "
@@ -27,6 +28,7 @@ from swagger_server import encoder
 
 def main():
     app = connexion.App(__name__, specification_dir='./openapi/')
+    CORS(app.app, resources={r"/*": {"origins": "*"}})
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('hydronium-api.yaml',
                 arguments={'title': 'Hydronium API'},

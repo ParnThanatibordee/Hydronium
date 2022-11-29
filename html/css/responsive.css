@@ -126,7 +126,10 @@
         top: 0;
     }
 }
-
+.chart-style{
+    position:absolute;
+    margin-top:8rem;
+}
 @media (min-width: 992px) and (max-width: 1199px) {
      #main_slider a.carousel-control-prev {
         position: absolute;
@@ -143,6 +146,13 @@
 }
 .header_section {
      background-size: cover;
+}
+.outer-section{
+    
+    position:absolute;
+}
+.outer-container {
+    top: 40px
 }
 
 .menu_text {
@@ -184,7 +194,10 @@
 .footer_text{
     font-size: 15px;
 }
-
+.footer_section1{
+    position: absolute;
+    margin-top: 120vh;
+}
 
 }
 

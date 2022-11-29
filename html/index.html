@@ -66,9 +66,21 @@
       <!-- watering again section start -->
       <div class="watering_section">
          <div class="container">
-            <h2 style="text-align:center;">**Wait for endpoint watering again**</h2>
+            <h2 id="watering1" style="text-align:center;">**Wait for fetch watering again endpoint**</h2>
          </div>
       </div>
+      <script>
+         const loadWatering = async () => {
+         await fetch('http://localhost:8080/hydro/v1/water/nextWatering')
+         .then((response) => {
+            return response.json();
+         })
+         .then((data) => {
+            document.getElementById("watering1").innerText= `next watering: ${data.wateringAgain}`;
+         });
+         }
+         loadWatering();
+      </script>
       <!-- watering again section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding">

@@ -34,6 +34,7 @@
    </head>
    <body>
       <!--header section start -->
+      <div class="outer-container">
       <div class="header_section">
          <div class="container-fluid">
             <div class="costum_header">
@@ -51,11 +52,12 @@
                   <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png" class="toggle_menu"></span>
                </div>
             </div>
+         
          </div>
       </div>
       <!-- header section end -->
       <!-- dashboard section start -->
-      <div id="chart" style="width:100%;height:75vh;"></div>
+      <div id="chart" class="chart-style" style="width:100%;height:75vh;"></div>
       <!-- แก้ให้มันไม่ทับ navbar -->
       <script>
          async function createChart() {
@@ -100,32 +102,6 @@
          createChart();
       </script>
       <!-- dashboard section end -->
-      <!-- watering again section start -->
-      <div class="watering_section">
-         <div class="container">
-            <h2 style="text-align:center;">**Wait for endpoint watering again**</h2>
-         </div>
-      </div>
-      <!-- watering again section end -->
-      <!-- footer section start -->
-      <div class="footer_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-6">
-                  <h2 class="useful_text">Group members:</h2>
-                  <p class="footer_text">1. Thanatibordee Sihaboonthong  6310545299</p>
-                  <p class="footer_text">2. Noppharut Konsakdinasarn  6310546376</p>
-                  <p class="footer_text">3. Bhokin Watanapitak  6310546392</p>
-               </div>
-            </div>
-            <div id="social">
-               <a class="btn btn-block btn-social btn-github smGlobalBtn" href="https://github.com/ParnThanatibordee/Hydronium">
-                  <span class="fa fa-github"></span>
-               </a>
-            </div>
-         </div>
-      </div>
-      <!-- footer section end -->
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
@@ -164,5 +140,6 @@
          document.getElementById("myNav").style.width = "0%";
          }
       </script>   
+      </div>
    </body>
 </html>

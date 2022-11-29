@@ -81,5 +81,5 @@ def get_watering_next_time():
         else:
             # คำนวนหาวัน     
 
-            return "2022-11-25T00:00:00Z"
+            return models.WaterAgain("2022-11-25T00:00:00Z") 
 
