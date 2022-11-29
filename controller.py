@@ -33,19 +33,15 @@ def get_sensor_details(source):
             FROM SoftWet_sensor
             WHERE source=%s
         """, [source])
-        result = cs.fetchone()
-    if result:
-        ts, source, value = result
-        return models.Sensor(*result)
-    else:
-        abort(404)
+        result = [models.Sensor(*row) for row in cs.fetchall()]
+        return result
 
 def get_water_consume():
     with pool.connection() as conn, conn.cursor() as cs:
         cs.execute("""
             SELECT ts, source, value
             FROM SoftWet_sensor
-            WHERE source=co2signal
+            WHERE source='co2signal'
         """)
         result = [] 
         for row in cs.fetchall():
@@ -60,7 +56,7 @@ def get_water_consume_details(ts):
         cs.execute("""
             SELECT ts, source, value
             FROM SoftWet_sensor
-            WHERE source=co2signal AND ts=%s
+            WHERE source='co2signal' AND ts=%s
         """, [ts])
         result = cs.fetchone()
     if result:
