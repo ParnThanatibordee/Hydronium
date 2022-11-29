@@ -130,6 +130,16 @@
     position:absolute;
     margin-top:8rem;
 }
+
+.chart-style2{
+    position:absolute;
+    margin-top:40rem;
+}
+
+.chart-style3{
+    position:absolute;
+    margin-top:70rem;
+}
 @media (min-width: 992px) and (max-width: 1199px) {
      #main_slider a.carousel-control-prev {
         position: absolute;

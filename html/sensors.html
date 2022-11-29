@@ -56,10 +56,12 @@
       </div>
       <!-- header section end -->
       <!-- sensors section start -->
-      <div id="chart" class="chart-style" style="width:100%;height:75vh;"></div>
+      <div id="chart1" class="chart-style" style="width:100%;height:75vh;"></div>
+      <div id="chart2" class="chart-style2" style="width:100%;height:75vh;"></div>
+      <div id="chart3" class="chart-style3" style="width:100%;height:75vh;"></div>
       <!-- แก้ให้มันไม่ทับ navbar -->
       <script>
-         async function createChart() {
+         async function createChart(chart, source) {
             var resp = await fetch('http://localhost:3000/graphql', {
               method: 'POST',
               headers: {
@@ -69,11 +71,11 @@
               body: JSON.stringify({
                 query: `
                   {
-                    sensors {
-                     ts
-                     source
-                     value
-                    }
+                     controllerGetSensorDetails(source: ${source}) {
+                        ts
+                        source
+                        value
+                     }
                   }`
               })
             });
@@ -81,27 +83,27 @@
             var table = json.data;
 
             var data = [{
-               x: table.sensors.map(row => row.ts),
-               y: table.sensors.map(row => row.value),
+               x: table.controllerGetSensorDetails.map(row => row.ts),
+               y: table.controllerGetSensorDetails.map(row => row.value),
                type: 'line',
-               name: 'sensor',
+               name: `${source}`,
             }];       
-            const source = ['co2signal', 'light', 'soil', 'temp', 'tmd']
 
             var layout = {
-               title: 'sensors',
+               title: `${source}`,
                xaxis: {
                  title: 'timestamp'
                },
                yaxis: {
                  title: 'value',
-                 range: [0,500]
                }
             };
             var config = { responsive: true };
-            Plotly.newPlot("chart", data, layout, config);
+            Plotly.newPlot(`${chart}`, data, layout, config);
          } 
-         createChart();
+         createChart('chart1', 'light');
+         createChart('chart2', 'temp');
+         createChart('chart3', 'soil');
       </script>
       <!-- sensors section end -->
       <!-- Javascript files-->
