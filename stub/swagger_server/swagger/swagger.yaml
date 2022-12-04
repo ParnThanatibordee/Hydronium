@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Hydronium API
+  description: "This API provides historical water comsuming data of observed plant.\
+    \ Raw data provideed by Sensors (Light, Temperature, Humidity in Soil), Co2Signal,\
+    \ and Thai Meteorological Department (TMD)."
+  version: 2.0.0
+servers:
+- url: http://127.0.0.1:8080/hydro/v1
+paths:
+  /sensors:
+    get:
+      summary: Returns a list of sensors.
+      operationId: controller_get_sensors
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sensor'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /sensors/{source}:
+    get:
+      summary: Returns complete details of the specified sensors.
+      operationId: controller_get_sensor_details
+      parameters:
+      - name: source
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sensor'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /water/consume:
+    get:
+      summary: Returns a list of water consuming.
+      operationId: controller_get_water_consume
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterConsume'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /water/consume/{ts}:
+    get:
+      summary: Returns complete details of the specified timestamp.
+      operationId: controller_get_water_consume_details
+      parameters:
+      - name: ts
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterConsume'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /water/nextWatering:
+    get:
+      summary: Returns next datetime to watering.
+      operationId: controller_get_watering_next_time
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WaterAgain'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+components:
+  schemas:
+    Sensor:
+      type: object
+      properties:
+        ts:
+          type: string
+        source:
+          type: string
+          description: Source of the value
+        value:
+          type: number
+      example:
+        source: source
+        value: 0.80082819046101150206595775671303272247314453125
+        ts: ts
+    WaterConsume:
+      type: object
+      properties:
+        ts:
+          type: string
+        waterConsume:
+          type: number
+          description: water consuming (ml per day)
+      example:
+        waterConsume: 0.80082819046101150206595775671303272247314453125
+        ts: ts
+    WaterAgain:
+      type: object
+      properties:
+        wateringAgain:
+          type: string
+          description: when to watering the plant again
+      example:
+        wateringAgain: wateringAgain
+
