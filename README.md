@@ -3,10 +3,8 @@
 ## List of team members
 1. Thanatibordee Sihaboonthong 6310545299
 2. Noppharut Kongsakdinasarn 6310546376
-3. Bhokin Watanapitak 6310546392
-Department of Software and Knowledge Engineering
-Faculty of Engineering
-Kasetsart University
+3. Bhokin Watanapitak 6310546392  
+Kasetsart University, Faculty of Engineering, Department of Software and Knowledge Engineering 
 
 ## About The Project
 
