@@ -12,6 +12,8 @@ Kasetsart University
 
 The objective of the project is to track the plant's water consumption to study the behavior of the potted plants we want to monitor by plug the moisture sensor into the soil. We collect a status of rain, humidity in soil, light, CO2, so we can find the rate of water consumption of the rain and tell what time we should water the plants again. 
 
+## Features
+
 ## Getting Started
 
 ### Prerequisites
@@ -20,6 +22,13 @@ The objective of the project is to track the plant's water consumption to study 
 |------|---------|
 | DBUtils | any version |
 | PyMySQL | any version |
+| flask_cors | any version |
+| connexion | >= 2.6.0 |
+| connexion[swagger-ui] | >= 2.6.0 |
+| python_dateutil | >= 2.6.0 |
+| setuptools | >= 21.0.0 |
+| swagger-ui-bundle | >= 0.0.2 |
+| python | 3.10.8 or any version |
 
 ### Installation
 1. Clone this repository
