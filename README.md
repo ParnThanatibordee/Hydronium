@@ -1,5 +1,13 @@
 # Hydronium
 
+## List of team members
+1. Thanatibordee Sihaboonthong 6310545299
+2. Noppharut Kongsakdinasarn 6310546376
+3. Bhokin Watanapitak 6310546392
+Department of Software and Knowledge Engineering
+Faculty of Engineering
+Kasetsart University
+
 ## About The Project
 
 The objective of the project is to track the plant's water consumption to study the behavior of the potted plants we want to monitor by plug the moisture sensor into the soil. We collect a status of rain, humidity in soil, light, CO2, so we can find the rate of water consumption of the rain and tell what time we should water the plants again. 
