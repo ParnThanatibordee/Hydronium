@@ -18,9 +18,9 @@ The objective of the project is to track the plant's water consumption to study 
 
 | Name | Version |
 |------|---------|
-| DBUtils | any version |
-| PyMySQL | any version |
-| flask_cors | any version |
+| DBUtils | 3.0.2 or any version |
+| PyMySQL | 1.0.2 or any version |
+| flask_cors | 3.0.10 or any version |
 | connexion | >= 2.6.0 |
 | connexion[swagger-ui] | >= 2.6.0 |
 | python_dateutil | >= 2.6.0 |
