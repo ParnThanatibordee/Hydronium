@@ -11,6 +11,9 @@ Kasetsart University, Faculty of Engineering, Department of Software and Knowled
 The objective of the project is to track the plant's water consumption to study the behavior of the potted plants we want to monitor by plug the moisture sensor into the soil. We collect a status of rain, humidity in soil, light, CO2, so we can find the rate of water consumption of the rain and tell what time we should water the plants again. 
 
 ## Features
+1. Calculate the water consumption of potted plants.
+2. Displays sensor data (Primary and Secondary Data) over time.
+3. Tell users when to water the plants again.
 
 ## Getting Started
 
@@ -67,4 +70,5 @@ openapi-to-graphql --cors -u http://localhost:8080/hydro/v1 openapi/hydronium-ap
 
 ## References 
 [10-visual](https://drive.google.com/file/d/1-hcvErypZvDCqL4tIDZYygWmtYvk6HU7/view)  
-[ResearchGate](https://www.researchgate.net/post/How-can-I-convert-Satellite-Soil-Moisture-data-m3-m3-into-mm)
+[ResearchGate](https://www.researchgate.net/post/How-can-I-convert-Satellite-Soil-Moisture-data-m3-m3-into-mm)  
+[QuickDatabaseDiagrams](https://app.quickdatabasediagrams.com/#/d/JN17kg)
